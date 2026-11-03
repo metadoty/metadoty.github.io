@@ -37,7 +37,11 @@
   }
   .wrap{max-width:1180px;margin:0 auto;padding:0 20px 72px}
 
-  header{padding:44px 0 26px;border-bottom:1px solid var(--line)}
+  header{padding:44px 0 26px;border-bottom:1px solid var(--line);position:relative}
+  .corner-art{position:absolute;top:2px;right:0;width:158px;margin:0;pointer-events:none}
+  .corner-art svg{display:block;width:100%;height:auto}
+  @media (max-width:900px){.corner-art{width:118px}}
+  @media (max-width:680px){.corner-art{position:static;width:132px;margin:16px 0 0}}
   .eyebrow{
     display:inline-flex;align-items:center;gap:9px;
     font-size:12px;letter-spacing:.14em;text-transform:uppercase;
@@ -337,6 +341,31 @@
 <div class="wrap">
 
   <header>
+    <figure class="corner-art" aria-label="Пасхалка: сцена на кладбище в духе тетради">
+      <svg viewBox="0 0 160 160" role="img" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="caBg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#1b2030"/><stop offset="1" stop-color="#0d1017"/>
+          </linearGradient>
+          <linearGradient id="caGlow" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#e0403f" stop-opacity=".5"/><stop offset="1" stop-color="#e0403f" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+        <rect x="2" y="2" width="156" height="156" rx="22" fill="url(#caBg)" stroke="#2b3243"/>
+        <rect x="2" y="2" width="156" height="156" rx="22" fill="none" stroke="#e0403f" stroke-opacity=".22"/>
+        <circle cx="120" cy="30" r="34" fill="url(#caGlow)"/>
+        <path d="M20 134v-28a20 20 0 0 1 40 0v28z" fill="#2a3143"/>
+        <path d="M20 134v-28a20 20 0 0 1 40 0v28" fill="none" stroke="#3f4a61" stroke-width="2"/>
+        <text x="40" y="126" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="26" font-weight="700" fill="#78849c">L</text>
+        <rect x="12" y="134" width="56" height="5" rx="2.5" fill="#3f4a61"/>
+        <circle cx="104" cy="66" r="15" fill="#0b0e14" stroke="#39445c" stroke-width="1.5"/>
+        <circle cx="97.5" cy="63" r="1.9" fill="#e0403f"/>
+        <circle cx="110.5" cy="63" r="1.9" fill="#e0403f"/>
+        <path d="M96 71q8 10 16 0" fill="none" stroke="#e0403f" stroke-width="3" stroke-linecap="round"/>
+        <path d="M104 81c-15 0-23 11-25 25l-3 33h56l-3-33c-2-14-10-25-25-25z" fill="#0b0e14" stroke="#39445c" stroke-width="1.5"/>
+        <path d="M83 120c7-5 13-7 21-7s14 2 21 7" fill="none" stroke="#e0403f" stroke-width="2" stroke-opacity=".5"/>
+      </svg>
+    </figure>
     <div class="eyebrow"><span class="dot"></span> My Dota · мета-дайджест</div>
     <h1>My Dota<br><span>патч 7.41f</span></h1>
     <p class="lede">Тир-лист по позициям, винрейты на всех рангах и на Divine+, контрпики с предметами и список героев, которых лучше не брать в рейтинг. Данные сведены из публичной статистики на начало ноября 2026. Отдельные разделы — топ игроков по MMR и база по игре.</p>

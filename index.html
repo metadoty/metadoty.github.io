@@ -35,7 +35,33 @@
     -webkit-font-smoothing:antialiased;
     min-height:100vh;
   }
-  .wrap{max-width:1180px;margin:0 auto;padding:0 20px 72px}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 20px 72px;position:relative;z-index:1}
+
+  .bg-fx{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+  .bg-fx i{
+    position:absolute;display:block;border-radius:50%;filter:blur(58px);
+    opacity:.4;animation:drift 26s ease-in-out infinite alternate;
+  }
+  .bg-fx i:nth-child(1){width:540px;height:540px;left:-140px;top:-120px;background:radial-gradient(circle,rgba(224,64,63,.6),transparent 68%);animation-duration:24s}
+  .bg-fx i:nth-child(2){width:480px;height:480px;right:-130px;top:110px;background:radial-gradient(circle,rgba(90,169,230,.45),transparent 68%);animation-duration:32s;animation-delay:-7s}
+  .bg-fx i:nth-child(3){width:400px;height:400px;left:32%;bottom:-160px;background:radial-gradient(circle,rgba(232,183,58,.34),transparent 68%);animation-duration:39s;animation-delay:-14s}
+  .bg-fx .grid-fx{
+    position:absolute;inset:0;
+    background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
+    background-size:64px 64px;
+    -webkit-mask-image:radial-gradient(circle at 50% 0%,#000,transparent 78%);
+    mask-image:radial-gradient(circle at 50% 0%,#000,transparent 78%);
+  }
+  @keyframes drift{
+    from{transform:translate3d(0,0,0) scale(1)}
+    to{transform:translate3d(46px,-34px,0) scale(1.14)}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .bg-fx i{animation:none}
+  }
+  @media (max-width:680px){
+    .bg-fx i{filter:blur(42px);opacity:.32}
+  }
 
   header{padding:44px 0 26px;border-bottom:1px solid var(--line);position:relative}
   .corner-art{position:absolute;top:2px;right:0;width:158px;margin:0;pointer-events:none}
@@ -338,6 +364,10 @@
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"My Dota","alternateName":["MyDota","Май Дота"],"url":"https://neobazanastimircik-droid.github.io/","description":"My Dota — мета Dota 2 патча 7.41f: все герои с винрейтами и пикрейтами, тир-лист по позициям, контрпики с предметами и анти-мета.","inLanguage":"ru"}</script></head>
 <body>
+<div class="bg-fx" aria-hidden="true">
+  <i></i><i></i><i></i>
+  <span class="grid-fx"></span>
+</div>
 <div class="wrap">
 
   <header>

@@ -50,6 +50,14 @@
   }
   h1 span{color:var(--red-soft)}
   .lede{max-width:720px;color:var(--muted);margin:0 0 22px;font-size:17px}
+  .credit{
+    display:inline-flex;align-items:center;gap:8px;margin:0 0 20px;
+    font-size:13.5px;font-weight:600;color:var(--text);
+    background:linear-gradient(135deg,rgba(232,183,58,.16),rgba(232,183,58,.03));
+    border:1px solid rgba(232,183,58,.34);border-radius:999px;padding:7px 15px;
+  }
+  .credit b{color:var(--gold)}
+  .credit::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 4px rgba(232,183,58,.14)}
   .meta-row{display:flex;flex-wrap:wrap;gap:10px}
   .chip{
     display:inline-flex;align-items:center;gap:8px;
@@ -332,6 +340,7 @@
     <div class="eyebrow"><span class="dot"></span> My Dota · мета-дайджест</div>
     <h1>My Dota<br><span>патч 7.41f</span></h1>
     <p class="lede">Тир-лист по позициям, винрейты на всех рангах и на Divine+, контрпики с предметами и список героев, которых лучше не брать в рейтинг. Данные сведены из публичной статистики на начало ноября 2026. Отдельные разделы — топ игроков по MMR и база по игре.</p>
+    <p class="credit"><b>Денчик</b> создал этот сайт</p>
     <div class="meta-row">
       <div class="chip">Патч <b>7.41f</b> · с 15.09.2026</div>
       <div class="chip">Обновлено <b>4 ноября 2026</b></div>

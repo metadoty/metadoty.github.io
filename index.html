@@ -1112,7 +1112,7 @@
   function renderAllHeroes(){
     var q = (state.q3 || "").toLowerCase();
     var list = allHeroes.filter(function(h){
-      if (state.attr !== "all" && h.a !== state.attr) return false;
+      if (state.attr !== "all" && (h.a === "all" ? "uni" : h.a) !== state.attr) return false;
       if (q && h.n.toLowerCase().indexOf(q) === -1) return false;
       return true;
     });

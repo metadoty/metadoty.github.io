@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ru">
 <head>
 <meta charset="utf-8">
@@ -353,6 +353,48 @@
     .lb-table{font-size:12.5px}
     .lb-table th,.lb-table td{padding:8px 10px}
   }
+
+  .prem-cta{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    margin-top:14px;padding:11px 18px;border-radius:999px;
+    background:linear-gradient(135deg,#e8b73a,#cf9c1c);color:#1a1206;
+    font-weight:750;font-size:14px;text-decoration:none;
+    border:1px solid rgba(255,255,255,.18);
+    transition:transform .15s ease,filter .15s ease;
+  }
+  .prem-cta:hover{transform:translateY(-1px);filter:brightness(1.06)}
+  .prem-cta:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+
+  .premium{
+    margin:30px 0 0;padding:22px;border-radius:var(--radius);
+    background:linear-gradient(180deg,rgba(232,183,58,.07),rgba(232,183,58,.01));
+    border:1px solid rgba(232,183,58,.26);
+  }
+  .prem-badge{
+    display:inline-block;margin-left:10px;vertical-align:middle;
+    font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;font-weight:750;
+    color:#1a1206;background:var(--gold);border-radius:999px;padding:3px 9px;
+  }
+  .plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(228px,1fr));gap:14px;margin:4px 0 14px}
+  .plan{
+    display:flex;flex-direction:column;background:var(--panel);
+    border:1px solid var(--line);border-radius:var(--radius);padding:18px;
+  }
+  .plan.hot{
+    border-color:rgba(232,183,58,.46);
+    background:linear-gradient(180deg,rgba(232,183,58,.11),var(--panel));
+  }
+  .plan h3{margin:0;font-size:16px;letter-spacing:-.01em}
+  .plan .price{
+    margin:10px 0 12px;font-size:25px;font-weight:800;color:var(--gold);
+    font-variant-numeric:tabular-nums;letter-spacing:-.02em;
+  }
+  .plan .price span{font-size:13px;font-weight:600;color:var(--muted)}
+  .plan ul{margin:0 0 16px;padding-left:18px;color:#cfd6e6;font-size:13.5px;line-height:1.55}
+  .plan ul li{margin-bottom:6px}
+  .plan .prem-cta{margin-top:auto;width:100%;padding:10px 14px;font-size:13.5px}
+
+  .foot-note{margin-top:14px;font-size:12.5px;line-height:1.55;color:var(--muted);max-width:820px}
 </style>
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="yandex-verification" content="4ac2145c59e96c91">
@@ -378,6 +420,7 @@
     <h1>My Dota<br><span>патч 7.41f</span></h1>
     <p class="lede">Тир-лист по позициям, винрейты на всех рангах и на Divine+, контрпики с предметами и список героев, которых лучше не брать в рейтинг. Данные сведены из публичной статистики на начало ноября 2026. Отдельные разделы — топ игроков по MMR и база по игре.</p>
     <p class="credit"><b>Денчик</b> создал этот сайт</p>
+    <a class="prem-cta" href="https://boosty.to/mydota" target="_blank" rel="noopener">Премиум в Boosty · от 199 ₽/мес</a>
     <div class="meta-row">
       <div class="chip">Патч <b>7.41f</b> · с 15.09.2026</div>
       <div class="chip">Обновлено <b>4 ноября 2026</b></div>
@@ -407,6 +450,45 @@
       <div class="s">43,2% WR</div>
     </div>
   </div>
+
+  <section class="premium" id="premium" aria-labelledby="premium-title">
+    <h2 id="premium-title">Премиум в Boosty<span class="prem-badge">новое</span></h2>
+    <p class="sec-lede">Базовые разделы — тир-лист, винрейты, контрпики и гайд — остаются бесплатными. В подписке — то, что требует разбора: обоснование по каждому герою, срезы по MMR и ролям, айтем-билды под конкретные матчапы и персональный разбор твоего профиля.</p>
+    <div class="plans">
+      <div class="plan">
+        <h3>Supporter</h3>
+        <div class="price">199 ₽ <span>/ мес</span></div>
+        <ul>
+          <li>Дайджест патча: что реально изменилось</li>
+          <li>Тир-лист с обоснованием по каждому герою</li>
+          <li>Ранний доступ к обновлениям</li>
+        </ul>
+        <a class="prem-cta" href="https://boosty.to/mydota" target="_blank" rel="noopener">Оформить</a>
+      </div>
+      <div class="plan hot">
+        <h3>Pro</h3>
+        <div class="price">499 ₽ <span>/ мес</span></div>
+        <ul>
+          <li>Всё из Supporter</li>
+          <li>Премиум-таблицы: MMR-брекет × роль × регион</li>
+          <li>Контрпики с айтемами и порядком закупа</li>
+          <li>Анти-мета разбор раз в неделю</li>
+        </ul>
+        <a class="prem-cta" href="https://boosty.to/mydota" target="_blank" rel="noopener">Оформить</a>
+      </div>
+      <div class="plan">
+        <h3>Coach</h3>
+        <div class="price">1 490 ₽ <span>/ мес</span></div>
+        <ul>
+          <li>Всё из Pro</li>
+          <li>Один разбор твоего профиля или реплея в месяц</li>
+          <li>Персональный пул героев под твой MMR</li>
+        </ul>
+        <a class="prem-cta" href="https://boosty.to/mydota" target="_blank" rel="noopener">Оформить</a>
+      </div>
+    </div>
+    <p class="note">Оплата и выдача доступа — на стороне Boosty: сайт только ведёт на страницу подписки и не хранит платёжные данные. Автопродление отключается в личном кабинете Boosty в любой момент.</p>
+  </section>
 
   <section class="me" id="me" aria-labelledby="me-title">
     <h2 id="me-title">Мой Steam</h2>
@@ -649,6 +731,7 @@
       <span>таблица лидеров Valve · 04.11.2026</span>
       <span>про-игроки: OpenDota · 04.11.2026</span>
     </div>
+    <div class="foot-note">Проект неофициальный и не связан с Valve Corporation; Dota 2 и её ассеты принадлежат Valve. Закрытые материалы и подписка — в <a href="https://boosty.to/mydota" target="_blank" rel="noopener">Boosty</a>.</div>
   </footer>
 </div>
 

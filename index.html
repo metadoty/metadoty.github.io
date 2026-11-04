@@ -113,6 +113,8 @@
   .tab:hover{color:var(--text)}
   .tab[aria-selected="true"]{color:var(--text);border-bottom-color:var(--red)}
   .tab:focus-visible{outline:2px solid var(--red-soft);outline-offset:-2px;border-radius:6px}
+  .tab-link{text-decoration:none;display:inline-block}
+  .tab-link:hover{border-bottom-color:rgba(224,64,63,.45)}
 
   .panel-view{padding-top:26px}
   .panel-view[hidden]{display:none}
@@ -563,6 +565,7 @@
     <button class="tab" role="tab" id="tab-anti" aria-selected="false" aria-controls="view-anti">Анти-мета</button>
     <button class="tab" role="tab" id="tab-players" aria-selected="false" aria-controls="view-players">Топ игроков</button>
     <button class="tab" role="tab" id="tab-guide" aria-selected="false" aria-controls="view-guide">Гайд по Dota</button>
+    <a class="tab tab-link" href="about.html">О проекте · связь</a>
   </div>
 
   <section class="panel-view" id="view-roles" role="tabpanel" aria-labelledby="tab-roles">
@@ -793,7 +796,7 @@
       <span>таблица лидеров Valve · 04.11.2026</span>
       <span>про-игроки: OpenDota · 04.11.2026</span>
     </div>
-    <div class="foot-note">Проект неофициальный и не связан с Valve Corporation; Dota 2 и её ассеты принадлежат Valve. Закрытые материалы и подписка — в <a href="https://boosty.to/mydota" target="_blank" rel="noopener">Boosty</a>.</div>
+    <div class="foot-note">Связь и предложения — Telegram <a href="https://t.me/cry_0f_f3ar" target="_blank" rel="noopener">@cry_0f_f3ar</a>, подробнее на странице <a href="about.html">о проекте</a>. Проект неофициальный и не связан с Valve Corporation; Dota 2 и её ассеты принадлежат Valve. Закрытые материалы и подписка — в <a href="https://boosty.to/mydota" target="_blank" rel="noopener">Boosty</a>.</div>
   </footer>
 </div>
 

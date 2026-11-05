@@ -53,14 +53,17 @@
     return String(Math.round((a / b) * 100)).replace(".", ",") + "%";
   }
 
+  var TIER_NAMES = { creator: "Creator", coach: "Coach", pro: "Pro", supporter: "Supporter" };
+
   function planHtml(plan){
     var tier = (plan && plan.tier) || "free";
-    if (tier === "coach" || tier === "pro" || tier === "supporter") {
-      var label = tier.charAt(0).toUpperCase() + tier.slice(1);
-      return '<span class="plan-badge plan-' + esc(tier) + '">' + esc(label) + '</span>' +
-        '<span class="plan-note">подписка активна</span>';
+    if (TIER_NAMES[tier]) {
+      return '<span class="plan-badge plan-' + esc(tier) + '">' + esc(TIER_NAMES[tier]) + '</span>' +
+        '<span class="plan-note">подписка активна</span>' +
+        '<a class="plan-link" href="plans.html">что входит</a>';
     }
     return '<span class="plan-badge plan-free">Без подписки</span>' +
+      '<a class="plan-link" href="plans.html">Тарифы</a>' +
       '<a class="plan-link" href="https://boosty.to/mydota" target="_blank" rel="noopener noreferrer">Оформить</a>';
   }
 

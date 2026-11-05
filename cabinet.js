@@ -64,14 +64,14 @@
   }
 
   var SERVICES = [
-    { need: "supporter", title: "Дайджест патча", text: "Что изменилось и что выстрелит — сразу после патча.", act: "boosty" },
-    { need: "supporter", title: "Тир-лист с обоснованием", text: "Почему герой в этом тире, а не в соседнем.", act: "boosty" },
-    { need: "pro", title: "Премиум-таблицы MMR × роль", text: "Срезы по брекетам, ролям и регионам.", act: "boosty" },
-    { need: "pro", title: "Экспорт таблиц в CSV", text: "Забери таблицу файлом — напиши в Telegram, пришлю.", act: "tg" },
+    { need: "supporter", title: "Дайджест патча", text: "Что изменилось и что выстрелит — сразу после патча.", href: "materials.html#digest" },
+    { need: "supporter", title: "Тир-лист с обоснованием", text: "Почему герой в этом тире, а не в соседнем.", href: "materials.html#tierlist" },
+    { need: "pro", title: "Премиум-таблицы MMR × роль", text: "Срезы по брекетам, ролям и регионам.", href: "materials.html#premium" },
+    { need: "pro", title: "Экспорт таблиц в CSV", text: "Забери таблицу файлом прямо со страницы.", href: "materials.html#premium" },
     { need: "coach", title: "Разбор реплея", text: "Один матч в месяц: драфт, лейнинг, файты, айтемы.", act: "ticket" },
-    { need: "coach", title: "Персональный пул героев", text: "5–7 героев под твой MMR — соберу по твоим матчам.", act: "tg" },
-    { need: "creator", title: "Выгрузки данных CSV и JSON", text: "Сырая мета раз в патч для своих таблиц и видео.", act: "tg" },
-    { need: "creator", title: "Публикация гайда", text: "Присылаешь текст — публикую с подписью автора.", act: "tg" }
+    { need: "coach", title: "Персональный пул героев", text: "5–7 героев под твой MMR — из твоих избранных.", href: "materials.html#pool" },
+    { need: "creator", title: "Выгрузки данных CSV и JSON", text: "Сырая мета раз в патч для своих таблиц и видео.", href: "materials.html#dataset" },
+    { need: "creator", title: "Публикация гайда", text: "Присылаешь текст — публикую с подписью автора.", href: "materials.html#guide" }
   ];
 
   function renderPlan(tier){
@@ -85,8 +85,7 @@
       var action = "";
       if (ok) {
         if (s.act === "ticket") action = '<button class="acct-btn ghost cab-go" type="button">Оставить заявку</button>';
-        else if (s.act === "tg") action = '<a class="plan-link" href="https://t.me/cry_0f_f3ar" target="_blank" rel="noopener noreferrer">Написать в Telegram</a>';
-        else action = '<a class="plan-link" href="https://boosty.to/mydota" target="_blank" rel="noopener noreferrer">Открыть в Boosty</a>';
+        else action = '<a class="plan-link" href="' + esc(s.href) + '">Открыть на сайте</a>';
       } else {
         action = '<span class="cab-lock">Нужен ' + esc(NAMES[s.need]) + '</span>';
       }

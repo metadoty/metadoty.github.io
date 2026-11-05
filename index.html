@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru" data-api="https://mydota-api.neobazanastimircik.workers.dev">
+<html lang="ru" data-api="https://mydota-api.neobazanastimircik.workers.dev" data-valve-proxy="https://mydota-api.neobazanastimircik.workers.dev">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -997,6 +997,9 @@
         "<div class=\"me-num\"><div class=\"k\">Победы</div><div class=\"v\">" + m.win + "</div></div>" +
         "<div class=\"me-num\"><div class=\"k\">Поражения</div><div class=\"v\">" + m.lose + "</div></div>" +
         "</div>";
+    } else {
+      nums = "<p class=\"note\">Steam не отдаёт матчи: в Dota 2 выключен «Публичный профиль» " +
+        "(Expose Public Match Data). Включи его в настройках игры — цифры появятся здесь.</p>";
     }
     var heroesHtml = ((m && m.heroes) || []).map(function(h){
       return "<div class=\"me-hero\"><span class=\"hn\">" + esc(h.name) + "</span>" +

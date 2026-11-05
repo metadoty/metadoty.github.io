@@ -78,6 +78,7 @@
         '<div class="acct-plan">' + planHtml(me.plan) + '</div></div>' +
       '</div>' +
       '<div class="acct-actions">' +
+        (me.admin ? '<a class="acct-btn ghost" href="admin.html">Админка</a>' : '') +
         '<a class="acct-btn ghost" href="' + esc(safeUrl(p.profile)) + '" target="_blank" rel="noopener noreferrer nofollow">Профиль Steam</a>' +
         '<button class="acct-btn ghost" type="button" id="acct-logout">Выйти</button>' +
       '</div>' +

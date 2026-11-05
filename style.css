@@ -519,3 +519,27 @@ header > .acct-wrap .acct-stat b{font-size:17px}
   header > .acct-wrap .acct{flex-direction:row;align-items:center;justify-content:space-between}
   header > .acct-wrap .acct-actions{width:auto}
 }
+
+.adm-back{display:inline-block;margin:0 0 14px;font-size:13px;color:var(--muted);text-decoration:none;border-bottom:1px dotted var(--line)}
+.adm-back:hover{color:var(--text);border-bottom-style:solid}
+.adm-h1{font-size:30px;letter-spacing:-.02em;margin:0 0 8px}
+.adm-card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:18px 20px;margin:0 0 18px}
+.adm-card h2{margin:0 0 14px;font-size:18px;letter-spacing:-.01em}
+.adm-form{display:flex;flex-wrap:wrap;gap:12px;align-items:flex-end}
+.adm-field{display:flex;flex-direction:column;gap:6px;flex:1 1 220px}
+.adm-field span{font-size:11.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.adm-field input,.adm-field select{
+  font-family:inherit;font-size:14px;color:var(--text);background:var(--panel-2);
+  border:1px solid var(--line);border-radius:10px;padding:10px 12px;outline:none;
+}
+.adm-field input:focus,.adm-field select:focus{border-color:var(--red)}
+.adm-list{display:flex;flex-direction:column;gap:9px}
+.adm-row{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;background:var(--panel-2);border:1px solid var(--line);border-radius:11px;padding:11px 13px}
+.adm-row-id{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:14px;font-variant-numeric:tabular-nums}
+.adm-login,.adm-denied{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:20px;max-width:560px}
+.adm-login p,.adm-denied p{margin:0 0 14px;color:var(--muted);font-size:14px}
+@media (max-width:640px){
+  .adm-form{flex-direction:column;align-items:stretch}
+  .adm-field{flex:1 1 auto}
+  .adm-row{flex-direction:column;align-items:flex-start}
+}

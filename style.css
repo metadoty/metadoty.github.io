@@ -1,4 +1,4 @@
-  :root{
+﻿  :root{
     --bg:#0d0f14;
     --bg-2:#12151c;
     --panel:#161a23;
@@ -491,3 +491,19 @@
     .acct-actions{width:100%}
     .acct-btn{flex:1 1 auto;justify-content:center}
   }
+
+header > .acct-wrap{
+  position:absolute;top:44px;right:0;width:min(380px,36vw);margin:0;z-index:4;
+}
+header > .acct-wrap .acct{flex-direction:column;align-items:flex-start;gap:12px}
+header > .acct-wrap .acct-actions{width:100%}
+header > .acct-wrap .acct-btn{flex:1 1 auto;justify-content:center}
+header > .acct-wrap .note{font-size:12.5px;line-height:1.45;margin:10px 0 0}
+header > .acct-wrap .acct-stats{gap:8px}
+header > .acct-wrap .acct-stat{flex:1 1 84px;padding:9px 11px}
+header > .acct-wrap .acct-stat b{font-size:17px}
+@media (max-width:1100px){
+  header > .acct-wrap{position:static;width:auto;margin:16px 0 24px}
+  header > .acct-wrap .acct{flex-direction:row;align-items:center;justify-content:space-between}
+  header > .acct-wrap .acct-actions{width:auto}
+}

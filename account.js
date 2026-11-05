@@ -23,6 +23,11 @@
       .replace(/>/g, "&gt;").replace(/"/g, "&quot;");
   }
 
+  function safeUrl(u){
+    var s = String(u == null ? "" : u);
+    return /^https:\/\/[^\s"<>]+$/i.test(s) ? s : "#";
+  }
+
   function authHeaders(){
     return token ? { authorization: "Bearer " + token } : {};
   }
@@ -48,6 +53,17 @@
     return String(Math.round((a / b) * 100)).replace(".", ",") + "%";
   }
 
+  function planHtml(plan){
+    var tier = (plan && plan.tier) || "free";
+    if (tier === "coach" || tier === "pro" || tier === "supporter") {
+      var label = tier.charAt(0).toUpperCase() + tier.slice(1);
+      return '<span class="plan-badge plan-' + esc(tier) + '">' + esc(label) + '</span>' +
+        '<span class="plan-note">подписка активна</span>';
+    }
+    return '<span class="plan-badge plan-free">Без подписки</span>' +
+      '<a class="plan-link" href="https://boosty.to/mydota" target="_blank" rel="noopener noreferrer">Оформить</a>';
+  }
+
   function renderLogged(){
     var me = state.me;
     var p = (me && me.player) || {};
@@ -56,12 +72,13 @@
 
     var html = '<div class="acct acct-in">' +
       '<div class="acct-who">' +
-        (p.avatar ? '<img class="acct-ava" src="' + esc(p.avatar) + '" alt="" width="52" height="52" loading="lazy">' : '') +
+        (p.avatar ? '<img class="acct-ava" src="' + esc(safeUrl(p.avatar)) + '" alt="" width="52" height="52" loading="lazy">' : '') +
         '<div><div class="acct-name">' + esc(p.name || "Игрок Steam") + '</div>' +
-        '<div class="acct-sub">Steam ID ' + esc(p.steamid || "") + '</div></div>' +
+        '<div class="acct-sub">Steam ID ' + esc(p.steamid || "") + '</div>' +
+        '<div class="acct-plan">' + planHtml(me.plan) + '</div></div>' +
       '</div>' +
       '<div class="acct-actions">' +
-        '<a class="acct-btn ghost" href="' + esc(p.profile || "#") + '" target="_blank" rel="noopener nofollow">Профиль Steam</a>' +
+        '<a class="acct-btn ghost" href="' + esc(safeUrl(p.profile)) + '" target="_blank" rel="noopener noreferrer nofollow">Профиль Steam</a>' +
         '<button class="acct-btn ghost" type="button" id="acct-logout">Выйти</button>' +
       '</div>' +
     '</div>';

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" data-api="https://mydota-api.neobazanastimircik.workers.dev">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -131,6 +131,7 @@
   </section>
 
   <section class="me" id="me" aria-labelledby="me-title">
+    <div id="acct" class="acct-wrap"></div>
     <h2 id="me-title">Мой Steam</h2>
     <p class="note">Впиши Steam ID, ссылку на профиль или ник — покажу твои матчи, винрейт, медаль и топ-героев из открытой статистики OpenDota. Данные публичные, пароль и вход в Steam не нужны.</p>
     <form class="me-form" id="me-form" novalidate>
@@ -1293,5 +1294,6 @@
   }, true);
 })();
 </script>
+<script src="account.js"></script>
 </body>
 </html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ru" data-api="https://mydota-api.neobazanastimircik.workers.dev">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Кабинет подписки — My Dota</title>
+<meta name="robots" content="noindex, follow">
+<link rel="icon" href="favicon.ico?v=3" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=3">
+<meta name="theme-color" content="#0d0f14">
+<link rel="stylesheet" href="style.css">
+<link rel="apple-touch-icon" href="apple-touch-icon.png?v=3">
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a class="adm-back" href="index.html">← На сайт</a>
+    <h1 class="adm-h1">Кабинет</h1>
+    <p class="note">Здесь подписка превращается в действия: заявка на разбор реплея, пул героев, таблицы и выгрузки. Вход — через Steam, как и на сайте.</p>
+  </header>
+
+  <section class="adm-login" id="cab-login" hidden>
+    <p>Войди через Steam — покажу твой уровень подписки и открою сервисы.</p>
+    <a class="acct-btn" id="cab-login-link" href="#">Войти через Steam</a>
+  </section>
+
+  <div id="cab-body" hidden>
+
+    <div class="adm-card">
+      <div class="cab-who">
+        <img class="acct-ava" id="cab-ava" alt="" width="52" height="52" hidden>
+        <div>
+          <div class="acct-name" id="cab-name">—</div>
+          <div class="acct-sub" id="cab-sub"></div>
+          <div class="acct-plan" id="cab-plan"></div>
+        </div>
+      </div>
+      <p class="note" id="cab-hint"></p>
+    </div>
+
+    <div class="adm-card">
+      <h2>Сервисы подписки</h2>
+      <div class="cab-grid" id="cab-services"></div>
+    </div>
+
+    <div class="adm-card" id="cab-form-card" hidden>
+      <h2>Разбор реплея</h2>
+      <p class="note">Одна заявка = один матч. Приложи ID матча (или ссылку на матч) и опиши, что непонятно: драфт, лейнинг, файты, айтемы. Разберу и пришлю ответ сюда же. Лимит — раз в месяц по тарифу Coach.</p>
+      <form class="adm-form cab-form" id="cab-form" novalidate>
+        <label class="adm-field">
+          <span>ID матча или ссылка</span>
+          <input id="cab-match" type="text" inputmode="text" autocomplete="off" placeholder="8765432109 или ссылка на матч">
+        </label>
+        <label class="adm-field">
+          <span>Моя позиция</span>
+          <select id="cab-pos">
+            <option value="1">Позиция 1 — керри</option>
+            <option value="2">Позиция 2 — мид</option>
+            <option value="3">Позиция 3 — оффлейн</option>
+            <option value="4">Позиция 4 — роумер</option>
+            <option value="5">Позиция 5 — саппорт</option>
+          </select>
+        </label>
+        <label class="adm-field cab-wide">
+          <span>Что разобрать</span>
+          <textarea id="cab-note" rows="3" maxlength="400" placeholder="Проиграл лейн, не понял, когда идти на руну и как играть в файты"></textarea>
+        </label>
+        <button class="acct-btn" type="submit" id="cab-send">Отправить заявку</button>
+      </form>
+      <p class="me-status" id="cab-status" role="status" aria-live="polite"></p>
+    </div>
+
+    <div class="adm-card">
+      <h2>Мои заявки</h2>
+      <div class="adm-list" id="cab-list"><p class="note">Загрузка…</p></div>
+    </div>
+
+  </div>
+
+  <footer>
+    <div class="foot-note">Уровень подписки выдаётся вручную — если услуга закрыта, хотя тариф оплачен, напиши в Telegram <a href="https://t.me/cry_0f_f3ar" target="_blank" rel="noopener noreferrer">@cry_0f_f3ar</a>. Тарифы и что в них входит — на странице <a href="plans.html">подписки</a>.</div>
+  </footer>
+</div>
+<script src="cabinet.js"></script>
+</body>
+</html>

@@ -11,6 +11,7 @@
   var tierSel = document.getElementById("adm-tier");
   var status = document.getElementById("adm-status");
   var listBox = document.getElementById("adm-list");
+  var ticketsBox = document.getElementById("adm-tickets");
   var submitBtn = document.getElementById("adm-submit");
   var loginLink = document.getElementById("adm-login-link");
 
@@ -112,6 +113,63 @@
     setPlan(btn.getAttribute("data-steamid"), "free", "Подписка снята");
   });
 
+  function loadTickets(){
+    if (!ticketsBox) return;
+    ticketsBox.innerHTML = '<p class="note">Загрузка…</p>';
+    fetch(API + "/admin/tickets", { headers: headers(), mode: "cors" })
+      .then(function(r){ return r.ok ? r.json() : null; })
+      .then(function(data){
+        if (!data || !data.ok) { ticketsBox.innerHTML = '<p class="note">Не удалось загрузить заявки.</p>'; return; }
+        if (!data.items.length) { ticketsBox.innerHTML = '<p class="note">Заявок пока нет.</p>'; return; }
+        ticketsBox.innerHTML = data.items.map(function(t){
+          var d = new Date(t.ts || 0);
+          var p = function(n){ return (n < 10 ? "0" : "") + n; };
+          var when = p(d.getDate()) + "." + p(d.getMonth() + 1) + "." + d.getFullYear();
+          return '<div class="cab-tick" data-key="' + esc(t.key) + '">' +
+            '<div class="cab-tick-h"><b>Матч ' + esc(t.match) + ' · ' + esc(t.steamid) + '</b>' +
+              '<span class="plan-badge plan-' + (t.status === "done" ? "supporter" : t.status === "work" ? "pro" : "free") + '">' +
+              esc(t.statusLabel) + '</span></div>' +
+            '<div class="cab-tick-m">Позиция ' + esc(t.position || "—") + ' · ' + when + '</div>' +
+            (t.note ? '<p class="cab-tick-n">' + esc(t.note) + '</p>' : '') +
+            '<label class="adm-field cab-wide" style="margin-top:10px"><span>Ответ игроку</span>' +
+              '<textarea class="tk-answer" rows="2" maxlength="900">' + esc(t.answer || "") + '</textarea></label>' +
+            '<div class="tk-actions">' +
+              '<button class="acct-btn tk-save" type="button" data-status="work">В работе</button>' +
+              '<button class="acct-btn tk-save" type="button" data-status="done">Ответить и закрыть</button>' +
+            '</div>' +
+          '</div>';
+        }).join("");
+      })
+      .catch(function(){ ticketsBox.innerHTML = '<p class="note">Ошибка сети.</p>'; });
+  }
+
+  function saveTicket(card, status){
+    var key = card.getAttribute("data-key");
+    var area = card.querySelector(".tk-answer");
+    var answer = area ? area.value.trim() : "";
+    if (status === "done" && !answer) { say("Впиши ответ игроку", true); return; }
+    fetch(API + "/admin/ticket", {
+      method: "POST",
+      headers: headers({ "content-type": "application/json" }),
+      body: JSON.stringify({ key: key, status: status, answer: answer })
+    })
+      .then(function(r){ return r.ok; })
+      .then(function(ok){
+        say(ok ? "Заявка обновлена" : "Не получилось сохранить", !ok);
+        if (ok) loadTickets();
+      })
+      .catch(function(){ say("Ошибка сети", true); });
+  }
+
+  if (ticketsBox) {
+    ticketsBox.addEventListener("click", function(e){
+      var btn = e.target && e.target.closest ? e.target.closest(".tk-save") : null;
+      if (!btn) return;
+      var card = btn.closest(".cab-tick");
+      if (card) saveTicket(card, btn.getAttribute("data-status"));
+    });
+  }
+
   if (!API) {
     show("login");
     if (loginLink) loginLink.textContent = "API не настроен";
@@ -126,6 +184,7 @@
       if (!data || !data.ok || !data.admin) { show("denied"); return; }
       show("panel");
       loadList();
+      loadTickets();
     })
     .catch(function(){ show("login"); });
 })();

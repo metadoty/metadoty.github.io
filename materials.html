@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru" data-api="https://mydota-api.neobazanastimircik.workers.dev">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Материалы подписки — My Dota</title>
+<meta name="robots" content="noindex, follow">
+<link rel="icon" href="favicon.ico?v=3" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=3">
+<meta name="theme-color" content="#0d0f14">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a class="adm-back" href="cabinet.html">← В кабинет</a>
+    <h1 class="adm-h1">Материалы</h1>
+    <p class="note">Закрытые разделы по подписке: дайджест патча, тир-лист с обоснованием, срезы по ролям, выгрузки. Доступ проверяется по уровню — открыто только то, что входит в тариф.</p>
+  </header>
+
+  <section class="adm-login" id="mat-login" hidden>
+    <p>Войди через Steam, чтобы увидеть свои материалы.</p>
+    <a class="acct-btn" id="mat-login-link" href="#">Войти через Steam</a>
+  </section>
+
+  <div id="mat-body" hidden>
+    <div class="adm-card">
+      <div class="cab-who">
+        <div>
+          <div class="acct-name" id="mat-name">—</div>
+          <div class="acct-plan" id="mat-plan"></div>
+        </div>
+      </div>
+      <div class="tabs mat-tabs" id="mat-tabs" role="tablist"></div>
+    </div>
+
+    <div id="mat-out"></div>
+  </div>
+
+  <footer>
+    <div class="foot-note">Не хватает доступа? Напиши в Telegram <a href="https://t.me/cry_0f_f3ar" target="_blank" rel="noopener noreferrer">@cry_0f_f3ar</a>. Тарифы — на странице <a href="plans.html">подписки</a>.</div>
+  </footer>
+</div>
+<script src="meta-data.js"></script>
+<script src="materials.js"></script>
+</body>
+</html>
